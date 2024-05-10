@@ -1,0 +1,22 @@
+[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px; /* Size of radio button */
+    height: 16px; /* Size of radio button */
+    border: 2px solid #000; /* Border color */
+    border-radius: 50%; /* Make it round */
+    margin-right: 6px; /* Spacing between radio button and label */
+    transition: border-color 0.3s ease; /* Add transition effect */
+  }
+  
+  /* Apply color on hover */
+  [type="radio"]:hover {
+    border-color: #53B781;
+  }
+  
+  /* Style radio button when selected */
+  [type="radio"]:checked {
+    background-color: #53B781; /* Fill color when selected */
+    border-color: #53B781; /* Border color when selected */
+  }
