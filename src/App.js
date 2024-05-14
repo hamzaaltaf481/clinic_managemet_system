@@ -1,10 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import Appointments from "./Component/Appointments/Appointments";
-import Booking from "./Component/Booking";
 import Doctors from "./Component/Doctors/Doctors";
 import { Doc } from "./Component/Doctors/Doctors";
-import EditAppointments from "./Component/EditAppointments";
 import Login from "./Component/Login";
 import Signup from "./Component/Signup/SignUp";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

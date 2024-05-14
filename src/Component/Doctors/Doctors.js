@@ -7,9 +7,7 @@ import EditPatients from "../EditPatients";
 
 export const Doc = createContext();
 const Doctors = () => {
-  console.log("in docker comp")
   const { showBook, editPatients } = useContext(Doc);
-  console.log("showbook", showBook)
 
   return (
     <div className=" static ">

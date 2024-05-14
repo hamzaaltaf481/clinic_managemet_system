@@ -1,26 +1,27 @@
-import React, { useRef } from "react";
-import { Link, Router, useNavigate } from "react-router-dom";
-import Doctors from "./Doctors/Doctors";
-import Swal from "sweetalert2";
-
-// import swal from "sweetalert2";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const email = useRef();
-  const Password = useRef();
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
-  const getemail = localStorage.getItem("email");
-  const getPassword = localStorage.getItem("Password");
-  const handleLogin = () => {
-    if (
-      email.current.value === "abc@gmail.com" &&
-      Password.current.value === "12345"
-    ) {
-      localStorage.setItem("email", "abc@gmail.com");
-      localStorage.setItem("password", "12345");
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+    if (loggedUser) {
+      if (
+        input.email === loggedUser.email &&
+        input.password === loggedUser.password
+      ) {
+        localStorage.setItem("Loggedin", true);
         navigate("/");
+      } else {
+        alert((input.email && input.password) === "" ? ("Please Fill Complete Data"):("Invalid Credentials"));
+      }
     } else {
-      alert("Invalid Credentials")
+      alert((input.email && input.password) === "" ? ("Please Fill Complete Data"):("No Data Founded"));
     }
   };
   return (
@@ -47,20 +48,32 @@ const Login = () => {
             <form className="ml-8">
               <h1 className="text-3xl font-bold mt-2">Register Yourself</h1>
               <input
-                ref={email}
+                name="email"
+                value={input.email}
+                onChange={(e) =>
+                  setInput({ ...input, [e.target.name]: e.target.value })
+                }
                 placeholder="User Name"
-                type="text"
+                type="email"
                 className="mt-6 w-[384px] text-2xl shadow-md rounded-md bg-[#F8F8F8] p-3 border-gray-500"
               />
               <input
-                ref={Password}
+                name="password"
+                value={input.password}
+                onChange={(e) => {
+                  setInput({
+                    ...input,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
+                required
                 placeholder="Password"
                 type="password"
                 className="mt-6 w-[384px] text-2xl shadow-md rounded-md bg-[#F8F8F8] p-3 capitalize border-gray-500"
               />{" "}
               <button
                 className="flex justify-center gap-2 text-center mt-6 border w-[384px] h-[40px]  bg-[#53B781] border-[#53B781] text-2xl text-white font-bold rounded"
-                onClick={handleLogin}
+                onClick={handleOnClick}
               >
                 Login
                 <img src="/image/arrow.png" alt="arrow" />
