@@ -6,6 +6,7 @@ import { Doc } from "./Component/Doctors/Doctors";
 import Login from "./Component/Login";
 import Signup from "./Component/Signup/SignUp";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./Component/Services/ProtectedRoute";
 function App() {
   const [showBook, setShowBook] = useState(false);
   const [editApp, setEditApp] = useState(false);
@@ -54,6 +55,7 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route path="/" element={<ProtectedRoute/>}>
           <Route
             exact
             path="/"
@@ -62,7 +64,8 @@ function App() {
                 <Doctors />
               </Doc.Provider>
             }
-          />
+            />
+            </Route>
           <Route
             exact
             path="/Login"

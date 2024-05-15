@@ -13,7 +13,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const handleOnClick = (e) => {
-    e.preventDefault();
+    
     if (
       (input.name &&
         input.password &&

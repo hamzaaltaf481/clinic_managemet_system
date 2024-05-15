@@ -9,19 +9,17 @@ const Login = () => {
   const navigate = useNavigate();
   const handleOnClick = (e) => {
     e.preventDefault();
-    const loggedUser = JSON.parse(localStorage.getItem("user"));
-    if (loggedUser) {
-      if (
-        input.email === loggedUser.email &&
-        input.password === loggedUser.password
-      ) {
-        localStorage.setItem("Loggedin", true);
-        navigate("/");
-      } else {
-        alert((input.email && input.password) === "" ? ("Please Fill Complete Data"):("Invalid Credentials"));
-      }
+    const loggedUser = JSON.parse(localStorage.getItem("users"));
+    const matchUser = loggedUser.find((user)=> user.email === input.email && user.password === input.password )
+    console.log("email",input.email)
+    console.log("logged users", matchUser)
+    if (!input.email || !input.password) {
+      alert("Please fill in both email and password.");
+    } else if (matchUser) {
+      localStorage.setItem("Loggedin", true);
+      navigate("/");
     } else {
-      alert((input.email && input.password) === "" ? ("Please Fill Complete Data"):("No Data Founded"));
+      alert("Invalid credentials. Please try again.");
     }
   };
   return (
