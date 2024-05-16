@@ -5,13 +5,14 @@ import { Doc } from "./Doctors/Doctors";
 const Navbar = () => {
   const { handleEditPatientsClick } = useContext(Doc);
   const navigate = useNavigate();
-  const userName = JSON.parse(localStorage.getItem("users"));
-  // const checkName = userName.find((user)=> user.name)
+
+  const {checkSignin} = useContext(Doc);
+
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("Loggedin");
     navigate("/Login");
-    console.log("userName", userName);
+    // console.log("userName", userName);
   };
   return (
     <>
@@ -38,7 +39,7 @@ const Navbar = () => {
               </button>
               <div className="flex gap-10 ">
                 <h1 className="text-white text-2xl font-semibold capitalize mt-4">
-                  {userName.name}
+                  {checkSignin.name}
                 </h1>
                 <img
                   src="/image/pr.png"

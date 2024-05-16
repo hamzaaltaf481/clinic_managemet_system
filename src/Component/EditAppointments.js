@@ -11,12 +11,12 @@ const EditAppointments = () => {
         </h1>
         <label className="flex ml-[44px] pb-[12px]">Appointment Date</label>
         <input
-          type="Fields"
+          type="Date"
           className="w-[384px] h-[50px] ml-[44px] mb-[27px] bg-slate-100 rounded"
         />
         <label className="flex ml-[44px] pb-[12px]">Appointment Time</label>
         <input
-          type=" Dropdown"
+          type="Time"
           className="w-[184px] h-[50px] ml-[44px] bg-slate-100 rounded"
         />
         <input

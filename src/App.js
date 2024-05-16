@@ -12,6 +12,9 @@ function App() {
   const [editApp, setEditApp] = useState(false);
   const [editPatients, setEditPatients] = useState(false);
 
+  const Signin = JSON.parse(localStorage.getItem("users"))
+  const checkSignin = Signin.find((user)=> user.email && user.password && user.name)
+
   const handleBookingClick = () => {
     setShowBook(true);
     console.log(showBook);
@@ -49,6 +52,7 @@ function App() {
     handleEditClick,
     handleCancelEditClick,
     handleCancelPatientsClick,
+    checkSignin,
   };
 
   return (
